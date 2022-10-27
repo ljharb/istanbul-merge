@@ -42,11 +42,11 @@
 		"report"
 	],
 	"dependencies": {
-		"foreach": "^2.0.5",
-		"glob": "^7.1.6",
+		"foreach": "^2.0.6",
+		"glob": "^7.2.3",
 		"istanbul-lib-coverage": "^2.0.5",
-		"mkdirp": "^0.5.5",
-		"yargs": "^7.1.0"
+		"mkdirp": "^0.5.6",
+		"yargs": "^7.1.2"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^21.0.0",

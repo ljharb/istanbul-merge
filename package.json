@@ -42,7 +42,7 @@
 		"report"
 	],
 	"dependencies": {
-		"foreach": "^2.0.6",
+		"for-each": "^0.3.3",
 		"glob": "^7.2.3",
 		"istanbul-lib-coverage": "^2.0.5",
 		"mkdirp": "^0.5.6",

@@ -17,7 +17,7 @@ var options = require('yargs')
 
 var fs = require('fs');
 var path = require('path');
-var forEach = require('foreach');
+var forEach = require('for-each');
 var glob = require('glob');
 var istanbul = require('istanbul-lib-coverage');
 var mkdirp = require('mkdirp');

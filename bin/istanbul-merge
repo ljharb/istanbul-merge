@@ -2,9 +2,9 @@
 
 'use strict';
 
-var flatMap = require('array.prototype.flatmap');
+const flatMap = require('array.prototype.flatmap');
 
-var options = require('yargs')
+const options = require('yargs')
 	.string('out')
 	.describe('out', 'output path for merged raw coverage report JSON file')
 	.normalize('out')
@@ -17,27 +17,25 @@ var options = require('yargs')
 	.version()
 	.argv;
 
-var fs = require('fs');
-var path = require('path');
-var forEach = require('for-each');
-var glob = require('glob');
-var istanbul = require('istanbul-lib-coverage');
-var mkdirp = require('mkdirp');
+const fs = require('fs');
+const path = require('path');
+const forEach = require('for-each');
+const glob = require('glob');
+const istanbul = require('istanbul-lib-coverage');
+const mkdirp = require('mkdirp');
 
-var files = flatMap(options._, function (input) {
-	return glob.sync(input, {
-		mark: true,
-		nosort: true,
-		strict: true
-	});
-});
+const files = flatMap(options._, (input) => glob.sync(input, {
+	mark: true,
+	nosort: true,
+	strict: true,
+}));
 
-var map = istanbul.createCoverageMap({});
-forEach(files, function (file) {
-	var json = fs.readFileSync(file);
+const map = istanbul.createCoverageMap({});
+forEach(files, (file) => {
+	const json = fs.readFileSync(file);
 	map.merge(JSON.parse(json));
 });
 
-var output = path.resolve(options.out);
+const output = path.resolve(options.out);
 mkdirp.sync(path.dirname(output));
 fs.writeFileSync(output, JSON.stringify(map));

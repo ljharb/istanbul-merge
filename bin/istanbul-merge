@@ -2,6 +2,8 @@
 
 'use strict';
 
+var flatMap = require('array.prototype.flatmap');
+
 var options = require('yargs')
 	.string('out')
 	.describe('out', 'output path for merged raw coverage report JSON file')
@@ -22,14 +24,12 @@ var glob = require('glob');
 var istanbul = require('istanbul-lib-coverage');
 var mkdirp = require('mkdirp');
 
-var files = [];
-forEach(options._, function (input) {
-	var results = glob.sync(input, {
+var files = flatMap(options._, function (input) {
+	return glob.sync(input, {
 		mark: true,
 		nosort: true,
 		strict: true
 	});
-	files.push.apply(files, results);
 });
 
 var map = istanbul.createCoverageMap({});
